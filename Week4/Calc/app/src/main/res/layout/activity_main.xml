@@ -8,17 +8,27 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/input"
         android:layout_width="414dp"
         android:layout_height="94dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="right"
-        android:text="123"
         android:textColor="@color/colorBlack"
         android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/bclear"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/oper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bdot"
