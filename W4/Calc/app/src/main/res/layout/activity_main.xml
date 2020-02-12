@@ -14,6 +14,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="right"
+        android:text="0"
         android:textColor="@color/colorBlack"
         android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/bclear"

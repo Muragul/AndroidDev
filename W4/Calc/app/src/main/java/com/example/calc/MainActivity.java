@@ -300,7 +300,8 @@ public class MainActivity extends AppCompatActivity {
         bdel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (input.getText().equals("impossible") || input.getText().equals("Infinity")){
+                if (input.getText().equals("impossible") || input.getText().equals("Infinity") ||
+                        input.getText().toString().contains("E")){
                     input.setText("0");
                 } else
                 if (input.getText().length()!=1){
