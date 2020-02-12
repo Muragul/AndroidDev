@@ -7,4 +7,6 @@ Introduction
 
 Week 3: Instagram layout
 
-Week 4: Calculator. Part 1. Portrt layout, basic functional.
+Week 4: Calculator. Part 1. Portrait layout, basic functional.
+
+Week 5: Calculator. Part 2. Landscape layout, additional functional.
