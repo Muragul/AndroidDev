@@ -47,7 +47,7 @@ public class SavesListAdapter extends RecyclerView.Adapter<SavesListAdapter.News
 
     @Override
     public void onBindViewHolder(@NonNull final NewsViewHolder holder, final int position) {
-        final News news = newsList.get(position);
+        final News news = newsList.get(getItemViewType(position));
         holder.profilePhoto.setImageResource(news.getProfilePhoto());
         holder.postImage.setImageResource(news.getPostImage());
         holder.author.setText(news.getAuthor());
@@ -55,6 +55,7 @@ public class SavesListAdapter extends RecyclerView.Adapter<SavesListAdapter.News
         holder.postText.setText(Html.fromHtml(s));
         holder.date.setText(news.getDate());
         holder.likesCnt.setText(news.getLikesCnt()+" likes");
+        holder.likeBtn.setImageResource(R.drawable.liked);
         holder.likeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,19 +69,6 @@ public class SavesListAdapter extends RecyclerView.Adapter<SavesListAdapter.News
             public void onClick(View v) {
                 if (listener!=null)
                     listener.ItemClick(position, news);
-            }
-        });
-
-        holder.saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!news.isSaved()){
-                    holder.saveBtn.setImageResource(R.drawable.saved);
-                    news.setSaved(true);
-                } else {
-                    holder.saveBtn.setImageResource(R.drawable.save);
-                    news.setSaved(false);
-                }
             }
         });
 
@@ -112,6 +100,10 @@ public class SavesListAdapter extends RecyclerView.Adapter<SavesListAdapter.News
             likeBtn = itemView.findViewById(R.id.likeBtn);
             saveBtn = itemView.findViewById(R.id.saveBtn);
         }
+    }
+
+    public int getItemViewType(int position){
+        return position;
     }
 
     interface ItemClickListener{

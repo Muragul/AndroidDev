@@ -45,7 +45,7 @@ SavesListAdapter.FragmentLikeListener{
 
     @Override
     public void removeItemLike(News news) {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.pager);
-        ((SavesList)fragment).removeNews(news);
+        myClick(news, 2);
+        ((NewsList)f1).removeLike(news);
     }
 }

@@ -31,11 +31,11 @@ public class SavesList extends Fragment {
                 .inflate(R.layout.page, container, false);
 
         recyclerView = rootView.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager((MainActivity)getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         listener = new SavesListAdapter.ItemClickListener() {
             @Override
             public void ItemClick(int position, News item) {
-                Intent intent = new Intent((MainActivity)getActivity(), NewsDetailActivity.class);
+                Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
                 intent.putExtra("news", item);
                 startActivity(intent);
             }

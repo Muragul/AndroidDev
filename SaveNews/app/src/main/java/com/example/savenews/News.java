@@ -9,23 +9,14 @@ public class News implements Serializable {
     private int likesCnt;
     private int postImage;
     private String postText;
-    private boolean isLiked;
-    private boolean isSaved;
+    private int likeBtn;
 
-    public boolean isLiked() {
-        return isLiked;
+    public int getLikeBtn() {
+        return likeBtn;
     }
 
-    public void setLiked(boolean liked) {
-        isLiked = liked;
-    }
-
-    public boolean isSaved() {
-        return isSaved;
-    }
-
-    public void setSaved(boolean saved) {
-        isSaved = saved;
+    public void setLikeBtn(int likeBtn) {
+        this.likeBtn = likeBtn;
     }
 
     public News(String author, String date, int profilePhoto, int likesCnt, int postImage, String postText) {
@@ -35,8 +26,7 @@ public class News implements Serializable {
         this.likesCnt = likesCnt;
         this.postImage = postImage;
         this.postText = postText;
-        this.isLiked = false;
-        this.isSaved = false;
+        this.likeBtn = R.drawable.like;
     }
 
     public String getAuthor() {

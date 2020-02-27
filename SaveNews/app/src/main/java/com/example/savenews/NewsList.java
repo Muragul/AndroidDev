@@ -30,11 +30,11 @@ public class NewsList extends Fragment {
         ViewGroup rootView = (ViewGroup)inflater
                 .inflate(R.layout.page, container, false);
         recyclerView = rootView.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager((MainActivity)getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         listener = new NewsListAdapter.ItemClickListener() {
             @Override
             public void ItemClick(int position, News item) {
-                Intent intent = new Intent((MainActivity)getActivity(), NewsDetailActivity.class);
+                Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
                 intent.putExtra("news", item);
                 startActivity(intent);
             }
@@ -183,5 +183,9 @@ public class NewsList extends Fragment {
         );
         items.add(news10);
         return items;
+    }
+
+    public void removeLike(News news){
+        adapter.removeLike(news);
     }
 }

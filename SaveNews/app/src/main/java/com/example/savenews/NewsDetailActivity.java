@@ -56,24 +56,12 @@ public class NewsDetailActivity extends AppCompatActivity {
         likeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!news.isLiked()){
+                if (news.getLikeBtn()==R.drawable.like){
                     likeBtn.setImageResource(R.drawable.liked);
-                    news.setLiked(true);
+                    news.setLikeBtn(R.drawable.liked);
                 } else {
                     likeBtn.setImageResource(R.drawable.like);
-                    news.setLiked(false);
-                }
-            }
-        });
-        saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!news.isSaved()){
-                    saveBtn.setImageResource(R.drawable.saved);
-                    news.setSaved(true);
-                } else {
-                    saveBtn.setImageResource(R.drawable.save);
-                    news.setSaved(false);
+                    news.setLikeBtn(R.drawable.like);
                 }
             }
         });

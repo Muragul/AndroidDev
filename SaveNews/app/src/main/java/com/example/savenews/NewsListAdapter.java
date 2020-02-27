@@ -19,6 +19,11 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
     private @Nullable ItemClickListener listener;
     private @Nullable FragmentButtonListener fragmentButtonListener;
 
+    public void removeLike(News news){
+        news.setLikeBtn(R.drawable.like);
+        newsList.set(newsList.indexOf(news), news);
+        this.notifyItemChanged(newsList.indexOf(news));
+    }
 
     public NewsListAdapter(List<News> newsList,
                            @Nullable ItemClickListener listener,
@@ -47,7 +52,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
 
     @Override
     public void onBindViewHolder(@NonNull final NewsViewHolder holder, final int position) {
-        final News news = newsList.get(position);
+        final News news = newsList.get(getItemViewType(position));
         holder.profilePhoto.setImageResource(news.getProfilePhoto());
         holder.postImage.setImageResource(news.getPostImage());
         holder.author.setText(news.getAuthor());
@@ -59,12 +64,12 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
             @Override
             public void onClick(View v) {
                 if (fragmentButtonListener!=null)
-                    if (news.isLiked()!=true){
-                        news.setLiked(true);
+                    if (news.getLikeBtn()==R.drawable.like){
+                        news.setLikeBtn(R.drawable.liked);
                         holder.likeBtn.setImageResource(R.drawable.liked);
                         fragmentButtonListener.myClick(news,1);
                     } else {
-                        news.setLiked(false);
+                        news.setLikeBtn(R.drawable.like);
                         holder.likeBtn.setImageResource(R.drawable.like);
                         fragmentButtonListener.myClick(news, 2);
                     }
@@ -76,19 +81,6 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
             public void onClick(View v) {
                 if (listener!=null)
                     listener.ItemClick(position, news);
-            }
-        });
-
-        holder.saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!news.isSaved()){
-                    holder.saveBtn.setImageResource(R.drawable.saved);
-                    news.setSaved(true);
-                } else {
-                    holder.saveBtn.setImageResource(R.drawable.save);
-                    news.setSaved(false);
-                }
             }
         });
 
@@ -120,6 +112,10 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
             likeBtn = itemView.findViewById(R.id.likeBtn);
             saveBtn = itemView.findViewById(R.id.saveBtn);
         }
+    }
+
+    public int getItemViewType(int position){
+        return position;
     }
 
     interface ItemClickListener{
