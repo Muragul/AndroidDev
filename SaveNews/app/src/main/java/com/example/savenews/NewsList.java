@@ -53,6 +53,7 @@ public class NewsList extends Fragment {
     private List<News> newsGenerator(){
         List<News> items = new ArrayList<>();
         News news1 = new News(
+                1,
                 "nikonrussia",
                 "October 13, 2019",
                 R.drawable.profile1,
@@ -70,6 +71,7 @@ public class NewsList extends Fragment {
         );
         items.add(news1);
         News news2 = new News(
+                2,
                 "selenationgomez",
                 "December 3, 2019",
                 R.drawable.profile2,
@@ -79,6 +81,7 @@ public class NewsList extends Fragment {
         );
         items.add(news2);
         News news3 = new News(
+                3,
                 "getteggroup",
                 "May 15, 2019",
                 R.drawable.profile3,
@@ -88,6 +91,7 @@ public class NewsList extends Fragment {
         );
         items.add(news3);
         News news4 = new News (
+                4,
                 "tiffany801.gg",
                 "May 31, 2018",
                 R.drawable.profile4,
@@ -100,6 +104,7 @@ public class NewsList extends Fragment {
         );
         items.add(news4);
         News news5 = new News (
+                5,
                 "randomemss",
                 "April 29, 2019",
                 R.drawable.profile5,
@@ -109,6 +114,7 @@ public class NewsList extends Fragment {
         );
         items.add(news5);
         News news6 = new News (
+                6,
                 "tiffanyyoungofficial",
                 "March 27, 2019",
                 R.drawable.profile6,
@@ -120,6 +126,7 @@ public class NewsList extends Fragment {
         );
         items.add(news6);
         News news7 = new News (
+                7,
                 "taylorswift",
                 "March 15, 2019",
                 R.drawable.profile7,
@@ -129,6 +136,7 @@ public class NewsList extends Fragment {
         );
         items.add(news7);
         News news8 = new News(
+                8,
                 "kbtu.spirit",
                 "November 20, 2018",
                 R.drawable.profile8,
@@ -160,6 +168,7 @@ public class NewsList extends Fragment {
         );
         items.add(news8);
         News news9 = new News (
+                9,
                 "mems__group",
                 "January 3",
                 R.drawable.profile9,
@@ -169,6 +178,7 @@ public class NewsList extends Fragment {
         );
         items.add(news9);
         News news10 = new News (
+                10,
                 "baby.yoda.memes_",
                 "January 6",
                 R.drawable.profile10,

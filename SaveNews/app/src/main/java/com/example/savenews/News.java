@@ -1,15 +1,38 @@
 package com.example.savenews;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class News implements Serializable {
+    public static List<News> newsList = new ArrayList<>();
+    private int id;
     private String author;
     private String date;
     private int profilePhoto;
     private int likesCnt;
     private int postImage;
     private String postText;
+
+    public boolean isLiked() {
+        return isLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
+    }
+
     private int likeBtn;
+    private boolean isLiked;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getLikeBtn() {
         return likeBtn;
@@ -19,7 +42,8 @@ public class News implements Serializable {
         this.likeBtn = likeBtn;
     }
 
-    public News(String author, String date, int profilePhoto, int likesCnt, int postImage, String postText) {
+    public News(int id, String author, String date, int profilePhoto, int likesCnt, int postImage, String postText) {
+        this.id = id;
         this.author = author;
         this.date = date;
         this.profilePhoto = profilePhoto;
@@ -27,6 +51,7 @@ public class News implements Serializable {
         this.postImage = postImage;
         this.postText = postText;
         this.likeBtn = R.drawable.like;
+        this.isLiked = false;
     }
 
     public String getAuthor() {

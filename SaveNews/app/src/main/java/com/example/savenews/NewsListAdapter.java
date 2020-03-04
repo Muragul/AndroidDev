@@ -19,6 +19,8 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
     private @Nullable ItemClickListener listener;
     private @Nullable FragmentButtonListener fragmentButtonListener;
 
+    //ADD METHOD TO UPDATE NEWSLIST
+
     public void removeLike(News news){
         news.setLikeBtn(R.drawable.like);
         newsList.set(newsList.indexOf(news), news);
@@ -31,7 +33,20 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
         this.newsList = newsList;
         this.listener = listener;
         this.fragmentButtonListener = fragmentButtonListener;
+
+        //CHECK
+        setHasStableIds(true);
+        //THIS
     }
+
+
+    //MAYBE REMOVE THIS
+    @Override
+    public long getItemId(int position) {
+        News news = newsList.get(position);
+        return news.getId();
+    }
+    //
 
     @NonNull
     @Override
@@ -60,21 +75,27 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
         holder.postText.setText(Html.fromHtml(s));
         holder.date.setText(news.getDate());
         holder.likesCnt.setText(news.getLikesCnt()+" likes");
+
+
+        //rewrite code
+        if (news.isLiked()==true)holder.likeBtn.setImageResource(R.drawable.liked);
+                else holder.likeBtn.setImageResource(R.drawable.like);
         holder.likeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (fragmentButtonListener!=null)
-                    if (news.getLikeBtn()==R.drawable.like){
-                        news.setLikeBtn(R.drawable.liked);
+                    if (news.isLiked() == false){
+                        news.setLiked(true);
                         holder.likeBtn.setImageResource(R.drawable.liked);
                         fragmentButtonListener.myClick(news,1);
                     } else {
-                        news.setLikeBtn(R.drawable.like);
+                        news.setLiked(false);
                         holder.likeBtn.setImageResource(R.drawable.like);
                         fragmentButtonListener.myClick(news, 2);
                     }
             }
         });
+        //
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

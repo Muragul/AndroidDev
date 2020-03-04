@@ -55,6 +55,8 @@ public class SavesListAdapter extends RecyclerView.Adapter<SavesListAdapter.News
         holder.postText.setText(Html.fromHtml(s));
         holder.date.setText(news.getDate());
         holder.likesCnt.setText(news.getLikesCnt()+" likes");
+
+        //rewrite code (MAYBE REMOVE SECOND ADAPTER)
         holder.likeBtn.setImageResource(R.drawable.liked);
         holder.likeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +65,7 @@ public class SavesListAdapter extends RecyclerView.Adapter<SavesListAdapter.News
                     fragmentLikeListener.removeItemLike(news);
             }
         });
+        //
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
