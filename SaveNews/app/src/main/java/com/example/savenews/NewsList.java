@@ -18,9 +18,10 @@ import java.util.List;
 public class NewsList extends Fragment {
 
     RecyclerView recyclerView;
-    private NewsListAdapter adapter;
-    private NewsListAdapter.ItemClickListener listener;
-    private NewsListAdapter.FragmentButtonListener fragmentButtonListener = null;
+    private Adapter adapter;
+    private Adapter.ItemClickListener listener;
+    private Adapter.FragmentButtonListener fragmentButtonListener = null;
+    private Adapter.FragmentLikeListener fragmentLikeListener = null;
 
     @Nullable
     @Override
@@ -31,7 +32,7 @@ public class NewsList extends Fragment {
                 .inflate(R.layout.page, container, false);
         recyclerView = rootView.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        listener = new NewsListAdapter.ItemClickListener() {
+        listener = new Adapter.ItemClickListener() {
             @Override
             public void ItemClick(int position, News item) {
                 Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
@@ -39,13 +40,19 @@ public class NewsList extends Fragment {
                 startActivity(intent);
             }
         };
-        fragmentButtonListener = new NewsListAdapter.FragmentButtonListener() {
+        fragmentButtonListener = new Adapter.FragmentButtonListener() {
             @Override
             public void myClick(News news, int option) {
                 ((MainActivity) getActivity()).myClick(news, option);
             }
         };
-        adapter = new NewsListAdapter(newsGenerator(), listener, fragmentButtonListener);
+        fragmentLikeListener = new Adapter.FragmentLikeListener() {
+            @Override
+            public void removeItemLike(News news) {
+                ((MainActivity)getActivity()).removeItemLike(news);
+            }
+        };
+        adapter = new Adapter(newsGenerator(), listener, fragmentButtonListener, fragmentLikeListener);
         recyclerView.setAdapter(adapter);
         return rootView;
     }

@@ -19,8 +19,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NewsListAdapter.FragmentButtonListener,
-SavesListAdapter.FragmentLikeListener{
+public class MainActivity extends AppCompatActivity implements Adapter.FragmentButtonListener,
+Adapter.FragmentLikeListener{
     private ViewPager pager;
     private PagerAdapter pagerAdapter;
     Fragment f1 = new NewsList();

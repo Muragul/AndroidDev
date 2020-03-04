@@ -12,41 +12,41 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsViewHolder> {
-    private List<News> newsList;
+public class Adapter extends RecyclerView.Adapter<Adapter.NewsViewHolder> {
+
+
+    List<News> main_list = new ArrayList<>();
+    List<News> save_list = new ArrayList<>();
     private @Nullable ItemClickListener listener;
     private @Nullable FragmentButtonListener fragmentButtonListener;
+    private @Nullable FragmentLikeListener fragmentLikeListener;
 
-    //ADD METHOD TO UPDATE NEWSLIST
-
-    public void removeLike(News news){
-        news.setLikeBtn(R.drawable.like);
-        News.newsList.set(newsList.indexOf(news), news);
-        this.notifyItemChanged(newsList.indexOf(news));
-    }
-
-    public NewsListAdapter(List<News> newsList,
+    public Adapter(List<News> newsList,
                            @Nullable ItemClickListener listener,
-                           @Nullable FragmentButtonListener fragmentButtonListener) {
-        this.newsList = newsList;
+                   @Nullable FragmentButtonListener fragmentButtonListener,
+                   @Nullable FragmentLikeListener fragmentLikeListener) {
+        News.newsList = newsList;
+        main_list = newsList;
         this.listener = listener;
         this.fragmentButtonListener = fragmentButtonListener;
+        this.fragmentLikeListener = fragmentLikeListener;
 
-        //CHECK
+        /*CHECK
         setHasStableIds(true);
-        //THIS
+        THIS*/
     }
 
 
-    //MAYBE REMOVE THIS
+    /*MAYBE REMOVE THIS
     @Override
     public long getItemId(int position) {
         News news = newsList.get(position);
         return news.getId();
     }
-    //
+    */
 
     @NonNull
     @Override
@@ -67,7 +67,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
 
     @Override
     public void onBindViewHolder(@NonNull final NewsViewHolder holder, final int position) {
-        final News news = newsList.get(getItemViewType(position));
+        final News news = News.newsList.get(getItemViewType(position));
         holder.profilePhoto.setImageResource(news.getProfilePhoto());
         holder.postImage.setImageResource(news.getPostImage());
         holder.author.setText(news.getAuthor());
@@ -76,26 +76,27 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
         holder.date.setText(news.getDate());
         holder.likesCnt.setText(news.getLikesCnt()+" likes");
 
-
-        //rewrite code
         if (news.isLiked()==true)holder.likeBtn.setImageResource(R.drawable.liked);
-                else holder.likeBtn.setImageResource(R.drawable.like);
+        else holder.likeBtn.setImageResource(R.drawable.like);
+
         holder.likeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (fragmentButtonListener!=null)
-                    if (news.isLiked() == false){
-                        news.setLiked(true);
-                        holder.likeBtn.setImageResource(R.drawable.liked);
-                        fragmentButtonListener.myClick(news,1);
-                    } else {
-                        news.setLiked(false);
+                if (fragmentButtonListener!=null){
+                    if (news.isLiked()){
                         holder.likeBtn.setImageResource(R.drawable.like);
                         fragmentButtonListener.myClick(news, 2);
+                        fragmentLikeListener.removeItemLike(news);
+                        news.setLiked(false);
+                    } else
+                    {
+                        holder.likeBtn.setImageResource(R.drawable.liked);
+                        fragmentButtonListener.myClick(news, 1);
+                        news.setLiked(true);
                     }
+                }
             }
         });
-        //
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +110,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
 
     @Override
     public int getItemCount() {
-        return newsList.size();
+        return News.newsList.size();
     }
 
     public class NewsViewHolder extends RecyclerView.ViewHolder{
@@ -139,11 +140,24 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
         return position;
     }
 
+    public interface FragmentButtonListener{
+        void myClick(News news, int option);
+    }
+
     interface ItemClickListener{
         void ItemClick(int position, News item);
     }
-    public interface FragmentButtonListener{
-        void myClick(News news, int option);
+    public interface FragmentLikeListener{
+        void removeItemLike(News news);
+    }
+
+    public void removeLike(News news){
+        int n = News.newsList.indexOf(news);
+        news.setLiked(false);
+        news.setLikeBtn(R.drawable.like);
+        News.newsList.set(n, news);
+        main_list.set(n, news);
+        this.notifyItemChanged(n);
     }
 }
 

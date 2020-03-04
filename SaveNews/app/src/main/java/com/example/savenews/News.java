@@ -6,6 +6,7 @@ import java.util.List;
 
 public class News implements Serializable {
     public static List<News> newsList = new ArrayList<>();
+    public static List<News> saves = new ArrayList<>();
     private int id;
     private String author;
     private String date;
@@ -13,6 +14,9 @@ public class News implements Serializable {
     private int likesCnt;
     private int postImage;
     private String postText;
+    private int likeBtn;
+    private boolean isLiked;
+
 
     public boolean isLiked() {
         return isLiked;
@@ -21,10 +25,6 @@ public class News implements Serializable {
     public void setLiked(boolean liked) {
         isLiked = liked;
     }
-
-    private int likeBtn;
-    private boolean isLiked;
-
 
     public int getId() {
         return id;
