@@ -6,20 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
-
-import java.util.ArrayList;
 import java.util.List;
+
 
 public class Adapter extends RecyclerView.Adapter<Adapter.NewsViewHolder> {
 
-
-    List<News> main_list = new ArrayList<>();
-    List<News> save_list = new ArrayList<>();
+    List<News> main_list;
     private @Nullable ItemClickListener listener;
     private @Nullable FragmentButtonListener fragmentButtonListener;
     private @Nullable FragmentLikeListener fragmentLikeListener;
@@ -34,19 +29,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NewsViewHolder> {
         this.fragmentButtonListener = fragmentButtonListener;
         this.fragmentLikeListener = fragmentLikeListener;
 
-        /*CHECK
-        setHasStableIds(true);
-        THIS*/
     }
-
-
-    /*MAYBE REMOVE THIS
-    @Override
-    public long getItemId(int position) {
-        News news = newsList.get(position);
-        return news.getId();
-    }
-    */
 
     @NonNull
     @Override

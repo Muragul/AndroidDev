@@ -56,11 +56,15 @@
 
     <ImageView
         android:id="@+id/likeBtn"
-        android:layout_width="40dp"
+        android:layout_width="47dp"
         android:layout_height="40dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
+        android:adjustViewBounds="true"
         android:background="@color/colorButton"
+        android:paddingLeft="5dp"
+        android:paddingTop="0dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="0dp"
+        android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postImage"
         app:srcCompat="@drawable/like" />
@@ -69,8 +73,6 @@
         android:id="@+id/commentsBtn"
         android:layout_width="36dp"
         android:layout_height="35dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
         android:layout_marginTop="3dp"
         android:background="@color/colorButton"
         app:layout_constraintStart_toEndOf="@+id/likeBtn"

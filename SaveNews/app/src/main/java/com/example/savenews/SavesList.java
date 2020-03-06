@@ -20,7 +20,7 @@ public class SavesList extends Fragment {
     private SavesListAdapter adapter;
     private List<News> newsList;
     private SavesListAdapter.ItemClickListener listener;
-    private SavesListAdapter.FragmentLikeListener fragmentLikeListener = null;
+    private SavesListAdapter.FragmentLikeListener fragmentLikeListener;
 
     @Nullable
     @Override
@@ -57,10 +57,8 @@ public class SavesList extends Fragment {
         recyclerView.getAdapter().notifyItemInserted(newsList.size()-1);
     }
     public void removeNews(News news){
-        if (newsList.size()==1){
-            newsList = new ArrayList<>();
-            adapter = new SavesListAdapter(newsList, listener, fragmentLikeListener);
-            recyclerView.setAdapter(adapter);
+        if (newsList.indexOf(news)==0){
+            newsList.remove(news);
         } else {
             int position = newsList.indexOf(news);
             newsList.remove(news);
