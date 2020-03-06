@@ -152,7 +152,8 @@ public class NewsList extends Fragment {
                 "вся жизнь в десятом пункте\n" +
                         "лайк и читаем дальше!\n" +
                         "ВЕЩИ, КОТОРЫЕ НАДО СДЕЛАТЬ, после поступления в КБТУ:\n" +
-                        "1. Выложить в инстаграм фотку здания КБТУ с подписью: «поступил/теперь студент/ ну здравствуй»\n" +
+                        "1. Выложить в инстаграм фотку здания КБТУ с подписью: «поступил/теперь " +
+                        "студент/ ну здравствуй»\n" +
                         "2. Написать в био интаграме \"KBTU Student\"\n" +
                         "3. Простоять в огромной очереди за книжками\n" +
                         "4. Так и не открыть ни одну книжку, сдать обратно\n" +
@@ -171,7 +172,8 @@ public class NewsList extends Fragment {
                         "17. Прогуливать пары, веселиться до 15 недели\n" +
                         "16. Следующие три недели после повторять пункт 10\n" +
                         "#кбту #студентыкбту #гадалкакбту\n" +
-                        "#духкбту #предсказаниеотРоксаны #гороскопдлястудентов #бш #BS #Фит #fit #ise #мшэ #ноцхи #фэнги #fogi #kma #кма #cecmc #мкм @kbtu_gov"
+                        "#духкбту #предсказаниеотРоксаны #гороскопдлястудентов #бш #BS #Фит #fit " +
+                        "#ise #мшэ #ноцхи #фэнги #fogi #kma #кма #cecmc #мкм @kbtu_gov"
         );
         items.add(news8);
         News news9 = new News (
@@ -196,9 +198,164 @@ public class NewsList extends Fragment {
                         "Follow @baby.yoda.memes__ for more! \uD83D\uDC9A\n" +
                         ".\n" +
                         ".\n" +
-                        "#yoda #yodamemes #babyyoda #babyyodamemes #starwars #themandalorian #mando #mandalorian #disney #disneyplus #cute #repost #riseofskywalker #lucasfilm #adorable #funny #memes #prequelmemes #jedi #force #theforce #new #rebelforceradio #relatable #relevant #starwarsclonewars #DaveFiloni #thisIsTheWay TheChild"
+                        "#yoda #yodamemes #babyyoda #babyyodamemes #starwars #themandalorian #mando " +
+                        "#mandalorian #disney #disneyplus #cute #repost #riseofskywalker #lucasfilm " +
+                        "#adorable #funny #memes #prequelmemes #jedi #force #theforce #new " +
+                        "#rebelforceradio #relatable #relevant #starwarsclonewars #DaveFiloni " +
+                        "#thisIsTheWay TheChild"
         );
         items.add(news10);
+        News news11 = new News(
+                11,
+                "feminist",
+                "March 6",
+                R.drawable.profile11,
+                18857,
+                R.drawable.post11,
+                "\uD83E\uDD8B\uD83C\uDF38\uD83D\uDDA4 I love it \uD83D\uDDA4\uD83C\uDF38\uD83E\uDD8B");
+        items.add(news11);
+        News news12 = new News(
+                12,
+                "polymathematica",
+                "February 20",
+                R.drawable.profile12,
+                25809,
+                R.drawable.post12,
+                "Best example ever \uD83D\uDE00\uD83D\uDE00\uD83D\uDE00\uD83D\uDE00\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        ".\n" +
+                        "\n" +
+                        "#Repost @jee.memes @scaleemael\n" +
+                        "• • • • • •\n" +
+                        "\n" +
+                        "#mathisfun #engineeringstudent #computerscience #math #physics #checkmate #engineeringmemes #mathmemes #computer #maths  #mathmeme #matematica #geometry #mathmeme #estudos #mathstudents  #study  #estudante #engenharia #blackhole #scientist  #scienceisfun #matematicas #engineering #nerd #calculus  #geometry #mathjokes"
+        );
+        items.add(news12);
+        News news13 = new News(
+                13,
+                "e.l.c.u.c.u.y",
+                "January 12",
+                R.drawable.profile13,
+                6792,
+                R.drawable.post13,
+                "\uD83D\uDE02\uD83D\uDE02\uD83D\uDE02"
+        );
+        items.add(news13);
+        News news14 = new News(
+                14,
+                "astrologpress",
+                "January 12",
+                R.drawable.profile14,
+                7300,
+                R.drawable.post14,
+                "РУБРИКА - ASTROГРАФИКА. Поддержите нас лайком ❤️, чтобы мы не потеряли друг друга.\n" +
+                        "⠀\n" +
+                        "А какой Ваш любимый камень?\n" +
+                        "⠀\n" +
+                        "С радостью увидим нашу ASTROГРАФИКУ в Ваших Сторис \uD83D\uDCF2 - и не забудьте отметить @astrologpress \uD83D\uDE09\n" +
+                        "\n" +
+                        "original by @sanctuarywrld "
+        );
+        items.add(news14);
+        News news15 = new News(
+                15,
+                "9gag",
+                "January 8",
+                R.drawable.profile15,
+                944583,
+                R.drawable.post15,
+                "Подтвержденный\n" +
+                        "If only this little fluff was real\n" +
+                        "✍\uD83C\uDFFB @art_of_silverfox\n" +
+                        "-\n" +
+                        "#doodle #fox #fluff #9gag"
+        );
+        items.add(news15);
+        News news16 = new News(
+                16,
+                "deeryoon.hk",
+                "December 3, 2019",
+                R.drawable.profile16,
+                3016,
+                R.drawable.post16,
+                "\uD83C\uDF38COSMO時尚美麗慶典\uD83C\uDF38 cr.logo,limyoonabar\n" +
+                        "@yoona__lim #yoona #limyoona #yoona__lim #yoonalim #snsd #soshi #sone #hksone #girlsgeneration #deeryoonhk"
+        );
+        items.add(news16);
+        News news17 = new News(
+                17,
+                "comely.vintage",
+                "December 9, 2019",
+                R.drawable.profile17,
+                9393,
+                R.drawable.post17,
+                "\uD835\uDC3C\uD835\uDCC3\uD835\uDCC8\uD835\uDCC5\uD835\uDCBE\uD835\uDCC7\uD835\uDCB6\uD835\uDCC9\uD835\uDCBE\uD835\uDC5C\uD835\uDCC3\n" +
+                        "#comelyvintage\n" +
+                        "~ via: @samsonthedood"
+        );
+        items.add(news17);
+        News news18 = new News(
+                18,
+                "edsm_kdrama",
+                "June 7, 2019",
+                R.drawable.profile18,
+                2260,
+                R.drawable.post18,
+                "Yang tadinya benci banget ama laki yang ngerokok\n" +
+                        "Tapi kalo om akuh buat pengecualian kok\uD83D\uDE0B\uD83E\uDD23\uD83E\uDD23\uD83E\uDD23\n" +
+                        "Keliatan Laki banget Om\uD83D\uDE0D\uD83D\uDE0D\uD83D\uDE0D\n" +
+                        "CR : andylah tumblr account\n" +
+                        "#그녀의사생활 #HerPrivateLife #TVNDrama\n" +
+                        "#박민영 #parkminyoung #SungDukMi\n" +
+                        "#김재욱 #KimJaeWook #RyanGold\n" +
+                        "#정제원 #JungJaeWon #ChaShiAhn\n" +
+                        "#안보현 #AhnBoHyun #NamEunKi\n" +
+                        "#김보라 #KimBoRa #Cindy\n" +
+                        "#Wednesday #Thursday\n" +
+                        "#누나팬닷컴"
+        );
+        items.add(news18);
+        News news19 = new News(
+                19,
+                "lildickygram",
+                "April 19, 2019",
+                R.drawable.profile19,
+                3003426,
+                R.drawable.post19,
+                "\uD83C\uDF0D out now #WeLoveTheEarth"
+        );
+        items.add(news19);
+        News news20 = new News(
+                20,
+                "artjumbo",
+                "December 23, 2018",
+                R.drawable.profile20,
+                5734,
+                R.drawable.post20,
+                "Toothless celebrities\n" +
+                        "Tag a friend and say nothing \uD83D\uDC47\n" +
+                        "\n" +
+                        "Follow @artjumbo @artjumbo \u200D\uD83C\uDFA8"
+        );
+        items.add(news20);
         return items;
     }
 

@@ -65,4 +65,9 @@ public class SavesList extends Fragment {
             recyclerView.getAdapter().notifyItemRemoved(position);
         }
     }
+    public void removeLike(News news){
+        int n = newsList.indexOf(news);
+        this.removeNews(news);
+        adapter.notifyItemRemoved(n);
+    }
 }

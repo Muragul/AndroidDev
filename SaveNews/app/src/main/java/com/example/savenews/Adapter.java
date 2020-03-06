@@ -68,7 +68,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NewsViewHolder> {
                 if (fragmentButtonListener!=null){
                     if (news.isLiked()){
                         holder.likeBtn.setImageResource(R.drawable.like);
-                        fragmentButtonListener.myClick(news, 2);
+                        //fragmentButtonListener.myClick(news, 2);
                         fragmentLikeListener.removeItemLike(news);
                         news.setLiked(false);
                     } else

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Adapter.FragmentButtonListener,
-Adapter.FragmentLikeListener{
+Adapter.FragmentLikeListener, SavesListAdapter.FragmentLikeListener{
     private ViewPager pager;
     private PagerAdapter pagerAdapter;
     Fragment f1 = new NewsList();
@@ -68,7 +68,7 @@ Adapter.FragmentLikeListener{
 
     @Override
     public void removeItemLike(News news) {
-        myClick(news, 2);
         ((NewsList)f1).removeLike(news);
+        ((SavesList)f2).removeLike(news);
     }
 }
