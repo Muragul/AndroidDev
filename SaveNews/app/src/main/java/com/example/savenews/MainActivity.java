@@ -11,7 +11,9 @@ import androidx.viewpager.widget.ViewPager;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,7 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Adapter.FragmentButtonListener,
 Adapter.FragmentLikeListener, SavesListAdapter.FragmentLikeListener{
-    private ViewPager pager;
+    private LockableViewPager pager;
     private PagerAdapter pagerAdapter;
     Fragment f1 = new NewsList();
     Fragment f2 = new SavesList();
@@ -37,6 +39,7 @@ Adapter.FragmentLikeListener, SavesListAdapter.FragmentLikeListener{
         list.add(f1);
         list.add(f2);
         pager = findViewById(R.id.pager);
+        pager.setSwipable(false);
         pagerAdapter = new SlidePagerAdapter(getSupportFragmentManager(), list);
         pager.setAdapter(pagerAdapter);
 
@@ -46,10 +49,12 @@ Adapter.FragmentLikeListener, SavesListAdapter.FragmentLikeListener{
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.home:
-                                pager.setCurrentItem(0);
+                                pager.setCurrentItem(0,false);
+                                bottomNavigationView.getMenu().findItem(R.id.save).setIcon(R.drawable.ic_save);
                                 break;
                             case R.id.save:
-                                pager.setCurrentItem(1);
+                                pager.setCurrentItem(1,false);
+                                item.setIcon(R.drawable.ic_favorite);
                                 break;
                         }
                         return false;

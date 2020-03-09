@@ -23,7 +23,7 @@
             app:itemIconTint="@drawable/selector"
             app:itemTextColor="@drawable/selector"/>
 
-        <androidx.viewpager.widget.ViewPager
+        <com.example.savenews.LockableViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
