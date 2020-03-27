@@ -14,3 +14,5 @@ Week 5: Calculator. Part 2. Landscape layout, additional functional.
 Week 6: RecyclerView. Instagram layout.
 
 Week 7: Fragments. Instagram saved posts.
+
+Week 11: Retrofit. MovieApp.
