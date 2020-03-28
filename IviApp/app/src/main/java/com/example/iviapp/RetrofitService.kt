@@ -1,5 +1,6 @@
 package com.example.iviapp
 
+import com.example.iviapp.model.Movie
 import com.example.iviapp.model.MoviesResponse
 
 import retrofit2.Call
@@ -25,5 +26,11 @@ interface PostApi {
 
     @GET("movie/popular")
     fun getPopularMovieList(@Query("api_key") apiKey: String): Call<MoviesResponse>
+
+    @GET("movie/{movie_id}")
+    fun getMovie(@Query("api_key")apiKey: String, movie_id: Int?): Movie
+
+    @GET("movie/top_rated")
+    fun getTopRatedMovieList(@Query("api_key")apiKey: String): Call<MoviesResponse>
 
 }

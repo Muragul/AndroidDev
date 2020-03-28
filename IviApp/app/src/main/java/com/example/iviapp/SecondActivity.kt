@@ -57,10 +57,9 @@ class SecondActivity : AppCompatActivity() {
             if (BuildConfig.THE_MOVIE_DB_API_TOKEN.isEmpty()) {
                 return
             }
-            RetrofitService.getPostApi().getPopularMovieList(BuildConfig.THE_MOVIE_DB_API_TOKEN)
+            RetrofitService.getPostApi().getTopRatedMovieList(BuildConfig.THE_MOVIE_DB_API_TOKEN)
                 .enqueue(object : Callback<MoviesResponse> {
                     override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
-                        TODO("Not yet implemented")
                         swipeContainer.isRefreshing = false
                     }
 
@@ -88,16 +87,6 @@ class SecondActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menu_settings -> {
-                val intent = Intent(this@SecondActivity, SettingsActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 
 
 }
