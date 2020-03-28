@@ -1,14 +1,12 @@
 package com.example.hw4
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
-class MainActivity : AppCompatActivity(), NewsListAdapter.ItemClickListener {
+class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: NewsListAdapter
 
@@ -18,24 +16,9 @@ class MainActivity : AppCompatActivity(), NewsListAdapter.ItemClickListener {
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.scrollToPosition(intent.getIntExtra("index", 0))
-
-        recyclerView.setOnClickListener(){
-            val intent = Intent(this@MainActivity, NewsDetailActivity::class.java)
-            intent.putExtra("news", 1)
-            intent.putExtra("index", 1)
-            startActivity(intent)
-        }
-
-        adapter = NewsListAdapter(newsGenerator(), listener = this)
+        adapter = NewsListAdapter(newsGenerator())
         recyclerView.adapter = adapter
-    }
-
-    override fun itemClick(position: Int, item: News) {
-        val intent = Intent(this@MainActivity, NewsDetailActivity::class.java)
-        intent.putExtra("news", item)
-        intent.putExtra("index", position)
-        startActivity(intent)
+        recyclerView.scrollToPosition(intent.getIntExtra("index", 0))
     }
 
     private fun newsGenerator(): List<News> {

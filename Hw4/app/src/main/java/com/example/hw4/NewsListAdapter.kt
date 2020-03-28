@@ -1,32 +1,25 @@
 package com.example.hw4
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import java.lang.Exception
+import com.bumptech.glide.Glide
 
-class NewsListAdapter(private var newsList: List<News>, private var listener: ItemClickListener):
+class NewsListAdapter(var newsList: List<News>):
     RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>() {
 
-    interface ItemClickListener {
-        fun itemClick(position: Int, item: News)
-    }
-
-    @SuppressLint("InflateParams")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val view = LayoutInflater.from(
             parent.context
         )
             .inflate(
                 R.layout.item_news,
-                null,
+                parent,
                 false
             )
         val params = RecyclerView.LayoutParams(
@@ -37,60 +30,38 @@ class NewsListAdapter(private var newsList: List<News>, private var listener: It
         return NewsViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return newsList.size
+    override fun getItemCount(): Int = newsList?.size
+
+    override fun onBindViewHolder(holder: NewsListAdapter.NewsViewHolder, position: Int) {
+        holder.bind(newsList[position])
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        val news = newsList[position]
-        holder.profilePhoto.setImageResource(news.profilePhoto)
-        holder.postImage.setImageResource(news.postImage)
-        holder.author.text = news.author
-        val s = "<b>" + news.author + "</b>" + " " + news.postText
-        holder.postText.text = Html.fromHtml(s)
-        holder.date.text = news.date
-        holder.likesCnt.text = news.likesCnt.toString() + " likes"
-        holder.isLiked = news.isLiked
-        holder.isSaved = news.isSaved
+    inner class NewsViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+        fun bind(news: News?) {
+            val author: TextView = view.findViewById(R.id.author)
+            var likesCnt: TextView = view.findViewById(R.id.likesCnt)
+            var postText: TextView = view.findViewById(R.id.postText)
+            var date:TextView = view.findViewById(R.id.date)
+            var postImage: ImageView = view.findViewById(R.id.postImage)
+            var profilePhoto:ImageView = view.findViewById(R.id.profilePhoto)
 
-        holder.itemView.setOnClickListener {
-            if (listener!=null) {
-                listener.itemClick(position, news)
+            if (news != null) {
+                Glide.with(view.context).load(news.profilePhoto).into(profilePhoto)
+                Glide.with(view.context).load(news.postImage).into(postImage)
+                author.text = news.author
+                val s = "<b>" + news.author + "</b>" + " " + news.postText
+                postText.text = Html.fromHtml(s)
+                date.text = news.date
+                likesCnt.text = news.likesCnt.toString() + " likes"
             }
-        }
-    }
 
-    class NewsViewHolder(itemView: View) : ViewHolder(itemView) {
-        var author: TextView = itemView.findViewById(R.id.author)
-        var likesCnt: TextView = itemView.findViewById(R.id.likesCnt)
-        var postText: TextView = itemView.findViewById(R.id.postText)
-        var date: TextView = itemView.findViewById(R.id.date)
-        var postImage: ImageView = itemView.findViewById(R.id.postImage)
-        var profilePhoto: ImageView = itemView.findViewById(R.id.profilePhoto)
-        private var likeBtn: ImageView = itemView.findViewById(R.id.likeBtn)
-        private var saveBtn: ImageView = itemView.findViewById(R.id.saveBtn)
-        var isLiked = false
-        var isSaved = false
+            view.setOnClickListener {
+                val intent = Intent(view.context, NewsDetailActivity::class.java)
+                intent.putExtra("news", news)
+                intent.putExtra("index", newsList.indexOf(news))
+                view.context.startActivity(intent)
+            }
 
-        init {
-            likeBtn.setOnClickListener {
-                isLiked = if (!isLiked) {
-                    likeBtn.setImageResource(R.drawable.liked)
-                    true
-                } else {
-                    likeBtn.setImageResource(R.drawable.like)
-                    false
-                }
-            }
-            saveBtn.setOnClickListener {
-                if (!isSaved) {
-                    saveBtn.setImageResource(R.drawable.saved)
-                    isSaved = true
-                } else {
-                    saveBtn.setImageResource(R.drawable.save)
-                }
-            }
         }
     }
 }
