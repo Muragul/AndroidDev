@@ -32,13 +32,11 @@ class MoviesAdapter(var context: Context, var movieList: List<Movie>) :
     inner class MyViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(post: Movie?) {
             val title = view.findViewById<TextView>(R.id.title)
-            val userrating = view.findViewById<TextView>(R.id.userrating)
             val thumbnail = view.findViewById<ImageView>(R.id.thumbnail)
 
 
             title.text = post?.originalTitle
             val vote=post?.voteAverage
-            userrating.text =vote.toString()
 
             Glide.with(context)
                 .load(post?.getPosterPath())

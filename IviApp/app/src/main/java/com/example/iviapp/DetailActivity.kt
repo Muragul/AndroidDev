@@ -41,8 +41,7 @@ class DetailActivity : AppCompatActivity() {
 
         val back: ImageButton = findViewById(R.id.back)
         back.setOnClickListener{
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
+            onBackPressed()
         }
     }
 }

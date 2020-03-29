@@ -6,4 +6,11 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never"/>
+
+    <item
+        android:title="Home"
+        android:id="@+id/home"/>
+
+    <item android:title="Saves"
+        android:id="@+id/save"/>
 </menu>
