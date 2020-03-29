@@ -47,7 +47,6 @@
                 android:layout_marginEnd="24dp"
                 android:layout_marginRight="24dp"
                 android:gravity="center_vertical"
-                android:text="Title"
                 android:textColor="@android:color/black"
                 android:textSize="20dp"
                 android:textStyle="bold"
@@ -78,7 +77,6 @@
                 android:layout_marginLeft="210dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
-                android:text="21.04.2020"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -103,9 +101,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="210dp"
-                android:gravity="center_vertical"
                 android:layout_marginLeft="210dp"
-                android:text="Кейт Шортланд"
+                android:gravity="center_vertical"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/releasedate" />
@@ -131,7 +128,6 @@
                 android:layout_marginStart="210dp"
                 android:layout_marginLeft="210dp"
                 android:gravity="center_vertical"
-                android:text="США"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/adult" />
@@ -157,7 +153,6 @@
                 android:layout_marginStart="210dp"
                 android:layout_marginLeft="210dp"
                 android:gravity="center_vertical"
-                android:text="110 мин"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rate" />
@@ -202,7 +197,6 @@
                 android:layout_marginRight="24dp"
                 android:layout_marginBottom="50dp"
                 android:gravity="center_vertical"
-                android:text="Description"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -223,6 +217,7 @@
         android:paddingLeft="5dp"
         android:paddingTop="5dp"
         android:paddingRight="5dp"
+        android:tint="@color/white"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

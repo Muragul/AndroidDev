@@ -13,9 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.button)
         button.setOnClickListener(){
-            val intent = Intent(this@MainActivity, SecondActivity::class.java)
-            intent.putExtra("news", 1)
-            intent.putExtra("index", 1)
+            val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }
     }

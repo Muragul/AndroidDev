@@ -1,6 +1,7 @@
 package com.example.iviapp.model
 
 import com.google.gson.annotations.SerializedName
+import retrofit2.Call
 
 class Movie {
     @SerializedName("poster_path")

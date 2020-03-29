@@ -1,92 +1,57 @@
 package com.example.iviapp
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.Toast
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.iviapp.adapter.MoviesAdapter
-import com.example.iviapp.model.Movie
-import com.example.iviapp.model.MoviesResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.lang.Exception
+import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.PagerAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.main_page.*
 
 
 class SecondActivity : AppCompatActivity() {
-
-    private lateinit var recyclerView: RecyclerView
-    private var adapter: MoviesAdapter? = null
-    private lateinit var movieList: List<Movie>
-    private lateinit var swipeContainer: SwipeRefreshLayout
+    private lateinit var pager: LockableViewPager
+    private lateinit var pagerAdapter: PagerAdapter
+    private var f1: Fragment = FirstFragment()
+    private var f2: Fragment = SecondFragment()
+    private var list: MutableList<Fragment> = ArrayList()
+    lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second)
+        setContentView(R.layout.main_page)
 
-        initViews()
+        var toolbar: TextView = findViewById(R.id.toolbar)
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
+        list.add(f1)
+        list.add(f2)
+        pager = findViewById(R.id.pager)
+        pager.setSwipable(false)
+        pagerAdapter = SlidePagerAdapter(supportFragmentManager, list)
+        pager.adapter = pagerAdapter
 
-        swipeContainer = findViewById(R.id.main_content)
-        swipeContainer.setOnRefreshListener {
-            initViews()
-        }
-    }
-
-    private fun initViews(){
-        recyclerView = findViewById(R.id.recycler_view)
-
-        movieList = ArrayList()
-        adapter = MoviesAdapter(this,movieList)
-        recyclerView.layoutManager = GridLayoutManager(this, 2)
-        recyclerView.itemAnimator=DefaultItemAnimator()
-        recyclerView.adapter = adapter
-        adapter?.notifyDataSetChanged()
-
-        loadJSON()
-    }
-
-    private fun loadJSON() {
-        try {
-            if (BuildConfig.THE_MOVIE_DB_API_TOKEN.isEmpty()) {
-                return
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    pager.setCurrentItem(0, false)
+                    bottomNavigationView.menu.findItem(R.id.save)
+                        .setIcon(R.drawable.ic_save)
+                    toolbar.text = "Popular"
+                }
+                R.id.save -> {
+                    pager.setCurrentItem(1, false)
+                    item.setIcon(R.drawable.ic_favorite)
+                    toolbar.text = "Favorites"
+                }
+                R.id.menu_settings -> {
+                    pager.setCurrentItem(2, false)
+                    bottomNavigationView.menu.findItem(R.id.save)
+                        .setIcon(R.drawable.ic_save)
+                    toolbar.text = "Profile"
+                }
             }
-            RetrofitService.getPostApi().getTopRatedMovieList(BuildConfig.THE_MOVIE_DB_API_TOKEN)
-                .enqueue(object : Callback<MoviesResponse> {
-                    override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
-                        swipeContainer.isRefreshing = false
-                    }
-
-                    override fun onResponse(
-                        call: Call<MoviesResponse>,
-                        response: Response<MoviesResponse>
-                    ) {
-                        Log.d("My_post_list", response.body().toString())
-                        if (response.isSuccessful) {
-                            val list = response.body()?.getResults()
-                            adapter?.movieList = list as List<Movie>
-                            adapter?.notifyDataSetChanged()
-                        }
-                        swipeContainer.isRefreshing = false
-
-                    }
-                })
-        } catch (e: Exception){
-            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT)
+            false
         }
+
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-
-
 }

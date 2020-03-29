@@ -21,8 +21,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.lang.Exception
 import java.util.*
+import kotlin.collections.ArrayList
 
-class NewsList : Fragment() {
+class FirstFragment : Fragment() {
 
     lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MoviesAdapter
@@ -37,19 +38,20 @@ class NewsList : Fragment() {
         var rootView: ViewGroup = inflater
             .inflate(R.layout.activity_second,
                 container, false) as ViewGroup
+
         recyclerView = rootView.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         swipeContainer = rootView.findViewById(R.id.main_content)
         swipeContainer.setOnRefreshListener {
             initViews()
         }
+        initViews()
         return rootView
     }
 
     private fun initViews(){
-
         movieList = ArrayList()
-        adapter = activity?.let { MoviesAdapter(it, movieList) }!!
+        adapter = activity?.applicationContext?.let { MoviesAdapter(it, movieList) }!!
         recyclerView.layoutManager = GridLayoutManager(activity, 2)
         recyclerView.itemAnimator= DefaultItemAnimator()
         recyclerView.adapter = adapter
@@ -65,7 +67,7 @@ class NewsList : Fragment() {
             if (BuildConfig.THE_MOVIE_DB_API_TOKEN.isEmpty()) {
                 return
             }
-            RetrofitService.getPostApi().getTopRatedMovieList(BuildConfig.THE_MOVIE_DB_API_TOKEN)
+            RetrofitService.getPostApi().getPopularMovieList(BuildConfig.THE_MOVIE_DB_API_TOKEN)
                 .enqueue(object : Callback<MoviesResponse> {
                     override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
                         swipeContainer.isRefreshing = false

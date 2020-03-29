@@ -2,11 +2,13 @@ package com.example.iviapp
 
 import com.example.iviapp.model.Movie
 import com.example.iviapp.model.MoviesResponse
+import com.google.gson.JsonObject
 
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 object RetrofitService {
@@ -28,7 +30,10 @@ interface PostApi {
     fun getPopularMovieList(@Query("api_key") apiKey: String): Call<MoviesResponse>
 
     @GET("movie/{movie_id}")
-    fun getMovie(@Query("api_key")apiKey: String, movie_id: Int?): Movie
+    fun getMovie(@Path("movie_id") movieId: Int, @Query("api_key") apiKey: String) : Call<Movie>
+
+    @GET("account/{account_id}/favorite/movies")
+    fun getFavorites(@Query("api_key")apiKey: String): Call<MoviesResponse>
 
     @GET("movie/top_rated")
     fun getTopRatedMovieList(@Query("api_key")apiKey: String): Call<MoviesResponse>
