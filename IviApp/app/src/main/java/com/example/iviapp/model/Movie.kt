@@ -17,7 +17,7 @@ class Movie {
     var releaseDate: String? = null
 
     @SerializedName("genre_ids")
-    private var genreIds: List<Int> = ArrayList()
+    var genreIds: List<Int> = ArrayList()
 
     @SerializedName("id")
     var id: Int? = null

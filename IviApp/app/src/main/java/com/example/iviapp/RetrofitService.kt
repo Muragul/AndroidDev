@@ -1,5 +1,6 @@
 package com.example.iviapp
 
+import com.example.iviapp.model.Genre
 import com.example.iviapp.model.Movie
 import com.example.iviapp.model.MoviesResponse
 import com.google.gson.JsonObject
@@ -34,6 +35,9 @@ interface PostApi {
 
     @GET("account/{account_id}/favorite/movies")
     fun getFavorites(@Query("api_key")apiKey: String): Call<MoviesResponse>
+
+    @GET("/genre/movie/list")
+    fun getGenres(@Query("api_key")apiKey: String): Call<List<Genre> >
 
     @GET("movie/top_rated")
     fun getTopRatedMovieList(@Query("api_key")apiKey: String): Call<MoviesResponse>

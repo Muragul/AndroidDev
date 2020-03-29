@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1a143a</color>
+    <color name="colorPrimary">#191919</color>
     <color name="colorPrimaryDark">#983027</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#232323</color>
     <color name="navbar">#281f54</color>
     <color name="lavender">#b4aed6</color>
-    <color name="pinkButton">#c2255c</color>
+    <color name="pinkButton">#696a6c</color>
 
     <color name="orange">#cb3f32</color>
     <color name="viewBg">#f1f5f8</color>

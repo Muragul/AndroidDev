@@ -7,55 +7,57 @@
     android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/navbar"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/navbar"
-        android:gravity="center"
-        android:text="Вход или регистрация"
-        android:textColor="@android:color/background_light"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
+    <EditText
         android:id="@+id/login"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
-        android:background="@android:color/white"
+        android:background="@drawable/secondinput"
         android:gravity="center_vertical"
+        android:hint="Email или телефон"
         android:paddingLeft="20dp"
-        android:text="Через email или телефон"
-        android:textColor="@color/lavender"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textColor="#9a9b9d"
+        android:textColorHint="#9a9b9d"
+        android:textSize="18dp"
+        app:layout_constraintCircleRadius="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navbar" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <TextView
-        android:id="@+id/password"
+
+    <View
+        android:id="@+id/hr"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="0.5dp"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
-        android:background="@android:color/white"
+        android:background="@color/pinkButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="0.5dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@drawable/myinput"
         android:gravity="center_vertical"
+        android:hint="Пароль"
         android:paddingLeft="20dp"
-        android:text="Пароль"
-        android:textColor="@color/lavender"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textColor="#9a9b9d"
+        android:textColorHint="#9a9b9d"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
@@ -64,20 +66,29 @@
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
-        android:background="@color/pinkButton"
+        android:background="@drawable/mybutton"
         android:text="Войти"
         android:textAllCaps="false"
-        android:textColor="@android:color/background_light"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="@+id/password"
         app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
