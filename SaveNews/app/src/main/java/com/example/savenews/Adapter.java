@@ -59,7 +59,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.NewsViewHolder> {
         holder.date.setText(news.getDate());
         holder.likesCnt.setText(news.getLikesCnt()+" likes");
 
-        if (news.isLiked()==true)holder.likeBtn.setImageResource(R.drawable.liked);
+        if (news.isLiked())holder.likeBtn.setImageResource(R.drawable.liked);
         else holder.likeBtn.setImageResource(R.drawable.like);
 
         holder.likeBtn.setOnClickListener(new View.OnClickListener() {

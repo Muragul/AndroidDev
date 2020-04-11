@@ -6,7 +6,6 @@ import java.util.List;
 
 public class News implements Serializable {
     public static List<News> newsList = new ArrayList<>();
-    public static List<News> saves = new ArrayList<>();
     private int id;
     private String author;
     private String date;
